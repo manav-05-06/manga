@@ -63,7 +63,7 @@ const PDFReader: React.FC<PDFReaderProps> = ({ file }) => {
       setBgmUrl(trackUrl);
       bgmRef.current.src = trackUrl;
       bgmRef.current.volume = 0.15;
-      bgmRef.current.play().catch(e => console.warn('BGM Auto-play blocked'));
+      bgmRef.current.play().catch((e) => console.warn('BGM Auto-play blocked', e));
     } else if (!trackUrl) {
       bgmRef.current.pause();
     }
