@@ -1,0 +1,193 @@
+.pdf-reader {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.reader-split-layout {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 2rem;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.reader-left-panel {
+  flex: 1.2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  min-width: 0;
+}
+
+.reader-right-panel {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  position: sticky;
+  top: 40px;
+}
+
+.pdf-controls {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+
+.pdf-controls button {
+  background: transparent;
+  color: var(--text-primary);
+  border: none;
+  cursor: pointer;
+  font-weight: 500;
+  transition: opacity 0.2s ease;
+}
+
+.pdf-controls button:hover:not(:disabled) {
+  opacity: 0.7;
+}
+
+.pdf-controls button:disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+
+.helper-text {
+  text-align: center;
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  margin-bottom: 0.5rem;
+}
+
+.pdf-canvas-wrapper {
+  max-width: 100%;
+}
+
+.pdf-canvas-container {
+  position: relative;
+  display: inline-block;
+  border-radius: var(--radius);
+  background: #ffffff;
+  padding: 0;
+  overflow: hidden;
+  cursor: crosshair;
+  user-select: none;
+  border: 1px solid var(--border);
+}
+
+.pdf-canvas-container canvas {
+  max-width: 100%;
+  max-height: 80vh;
+  object-fit: contain;
+  display: block;
+}
+
+.crop-box {
+  position: absolute;
+  border: 1px solid #ffffff;
+  background-color: rgba(255, 255, 255, 0.1);
+  pointer-events: none;
+  z-index: 10;
+  mix-blend-mode: difference;
+}
+
+.ai-panel {
+  width: 100%;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.ai-panel h2 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin: 0;
+  color: var(--text-primary);
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 0.75rem;
+}
+
+.extract-btn {
+  background: var(--primary);
+  color: var(--background);
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--radius);
+  font-weight: 500;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+  width: 100%;
+}
+
+.extract-btn:hover:not(:disabled) {
+  opacity: 0.9;
+}
+
+.extract-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.extracted-text {
+  width: 100%;
+  background: var(--background);
+  padding: 1.25rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+}
+
+.extracted-text h3 {
+  margin-bottom: 1rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.mood-badge {
+  font-size: 0.75rem;
+  background: var(--surface);
+  color: var(--text-secondary);
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  border: 1px solid var(--border);
+  font-weight: normal;
+}
+
+.extracted-text p {
+  white-space: pre-wrap;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  font-size: 1rem;
+}
+
+.play-btn {
+  background: transparent;
+  color: var(--text-primary);
+  border: 1px solid var(--border);
+  padding: 0.4rem 0.8rem;
+  border-radius: var(--radius);
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.play-btn:hover {
+  background: var(--surface);
+}
