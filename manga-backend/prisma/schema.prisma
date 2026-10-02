@@ -1,0 +1,48 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Manga {
+  id          String    @id @default(uuid())
+  title       String
+  chapters    Chapter[]
+  createdAt   DateTime  @default(now())
+}
+
+model Chapter {
+  id          String   @id @default(uuid())
+  mangaId     String
+  manga       Manga    @relation(fields: [mangaId], references: [id], onDelete: Cascade)
+  chapterNum  Int
+  pages       Page[]
+  scenes      Scene[]  
+  createdAt   DateTime @default(now())
+  
+  @@unique([mangaId, chapterNum])
+}
+
+model Page {
+  id          String   @id @default(uuid())
+  chapterId   String
+  chapter     Chapter  @relation(fields: [chapterId], references: [id], onDelete: Cascade)
+  pageNum     Int
+  imageUrl    String   
+  
+  @@unique([chapterId, pageNum])
+}
+
+model Scene {
+  id             String   @id @default(uuid())
+  chapterId      String
+  chapter        Chapter  @relation(fields: [chapterId], references: [id], onDelete: Cascade)
+  startPage      Int
+  endPage        Int
+  mood           String   
+  musicTrackUrl  String   
+}
+
